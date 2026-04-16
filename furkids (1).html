@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Furkids | Join the Sustainer Circle — Give Monthly, Save Lives</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #006D77;
+    --teal-dark: #004E56;
+    --teal-light: #83C5BE;
+    --coral: #E29578;
+    --coral-dark: #C97750;
+    --cream: #FFF8F0;
+    --warm-white: #FDFAF6;
+    --charcoal: #1E2426;
+    --mid-gray: #5A6670;
+    --light-gray: #EDF1F3;
+    --gold: #D4A853;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--warm-white);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(255,248,240,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(0,109,119,0.12);
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .header-logo img {
+    height: 44px;
+    width: auto;
+  }
+
+  .header-cta {
+    background: var(--coral);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .header-cta:hover {
+    background: var(--coral-dark);
+    transform: translateY(-1px);
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--teal-dark);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://furkids.org/assets/images/uploads/home_video_still.jpg');
+    background-size: cover;
+    background-position: center top;
+    opacity: 0.35;
+    transform: scale(1.04);
+    transition: transform 8s ease;
+  }
+
+  .hero-bg.loaded { transform: scale(1); }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,78,86,0.82) 0%, rgba(0,109,119,0.55) 50%, rgba(130,70,20,0.45) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 120px 48px 80px;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+
+  .hero-content.visible { opacity: 1; transform: translateY(0); }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+    font-weight: 900;
+    color: white;
+    line-height: 1.1;
+    margin-bottom: 22px;
+    max-width: 800px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--coral);
+  }
+
+  .hero-sub {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.88);
+    max-width: 560px;
+    line-height: 1.65;
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--coral);
+    color: white;
+    border: none;
+    padding: 16px 36px;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 20px rgba(226,149,120,0.45);
+  }
+
+  .btn-primary:hover {
+    background: var(--coral-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(226,149,120,0.55);
+  }
+
+  .btn-ghost {
+    border: 2px solid rgba(255,255,255,0.55);
+    color: white;
+    padding: 14px 30px;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-ghost:hover {
+    border-color: white;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 36px;
+    margin-top: 56px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    text-align: left;
+  }
+
+  .hero-stat-num {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: white;
+    display: block;
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.72);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-top: 4px;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.6);
+    font-size: 0.78rem;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.4);
+    margin: 8px auto 0;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* VSL SECTION */
+  .vsl-section {
+    background: var(--cream);
+    padding: 72px 48px;
+    text-align: center;
+  }
+
+  .vsl-placeholder {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--teal-dark);
+    border-radius: 16px;
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,78,86,0.3);
+  }
+
+  .vsl-placeholder img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+  }
+
+  .vsl-play {
+    position: relative;
+    z-index: 2;
+    width: 72px;
+    height: 72px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  }
+
+  .vsl-play:hover { transform: scale(1.1); background: white; }
+
+  .vsl-play::after {
+    content: '';
+    border-style: solid;
+    border-width: 14px 0 14px 24px;
+    border-color: transparent transparent transparent var(--teal-dark);
+    margin-left: 4px;
+  }
+
+  .vsl-label {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.85rem;
+    margin-top: 12px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* PAIN SECTION */
+  .pain-section {
+    padding: 96px 48px;
+    background: var(--charcoal);
+    color: white;
+  }
+
+  .section-inner { max-width: 1060px; margin: 0 auto; }
+
+  .pain-section h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 48px;
+    max-width: 680px;
+    line-height: 1.2;
+  }
+
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .pain-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 28px 28px;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .pain-card:hover {
+    background: rgba(255,255,255,0.08);
+    transform: translateY(-2px);
+  }
+
+  .pain-icon {
+    font-size: 2rem;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .pain-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--teal-light);
+  }
+
+  .pain-card p {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.6;
+  }
+
+  /* WHY US */
+  .why-section {
+    padding: 96px 48px;
+    background: var(--warm-white);
+  }
+
+  .why-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .why-section h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+    max-width: 640px;
+    line-height: 1.2;
+    color: var(--charcoal);
+  }
+
+  .why-intro {
+    font-size: 1.05rem;
+    color: var(--mid-gray);
+    max-width: 620px;
+    line-height: 1.7;
+    margin-bottom: 56px;
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-bottom: 56px;
+  }
+
+  .stat-card {
+    background: var(--teal);
+    color: white;
+    border-radius: 14px;
+    padding: 30px 24px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+
+  .stat-card:hover { transform: translateY(-3px); }
+
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 2.6rem;
+    font-weight: 900;
+    display: block;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-desc {
+    font-size: 0.85rem;
+    opacity: 0.88;
+    line-height: 1.4;
+  }
+
+  .testimonial-block {
+    background: var(--cream);
+    border-left: 4px solid var(--coral);
+    border-radius: 0 12px 12px 0;
+    padding: 28px 32px;
+    max-width: 700px;
+    margin-bottom: 24px;
+  }
+
+  .testimonial-block blockquote {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--charcoal);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .testimonial-attribution {
+    font-size: 0.85rem;
+    color: var(--mid-gray);
+    font-weight: 600;
+  }
+
+  /* STEPS */
+  .steps-section {
+    padding: 96px 48px;
+    background: var(--teal-dark);
+    color: white;
+    text-align: center;
+  }
+
+  .steps-section h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 56px;
+    color: white;
+  }
+
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 32px;
+    max-width: 900px;
+    margin: 0 auto 48px;
+  }
+
+  .step-card {
+    position: relative;
+    padding: 32px 24px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .step-card:hover {
+    background: rgba(255,255,255,0.11);
+    transform: translateY(-3px);
+  }
+
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--coral);
+    opacity: 0.55;
+    line-height: 1;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .step-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: white;
+  }
+
+  .step-card p {
+    font-size: 0.93rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+  }
+
+  /* COMMUNITY TIERS */
+  .tiers-section {
+    padding: 96px 48px;
+    background: var(--cream);
+  }
+
+  .tiers-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .tiers-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 14px;
+  }
+
+  .tiers-header p {
+    font-size: 1.05rem;
+    color: var(--mid-gray);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+
+  .tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  .tier-card {
+    background: white;
+    border-radius: 16px;
+    padding: 36px 28px;
+    border: 2px solid var(--light-gray);
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tier-card.featured {
+    border-color: var(--teal);
+    box-shadow: 0 12px 40px rgba(0,109,119,0.15);
+  }
+
+  .tier-card.featured::before {
+    content: 'Most Popular';
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--teal);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 0 14px 0 10px;
+  }
+
+  .tier-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+  }
+
+  .tier-icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+
+  .tier-name {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--teal-dark);
+    margin-bottom: 4px;
+  }
+
+  .tier-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .tier-price span {
+    font-size: 1rem;
+    color: var(--mid-gray);
+    font-weight: 400;
+  }
+
+  .tier-tagline {
+    font-size: 0.88rem;
+    color: var(--mid-gray);
+    font-style: italic;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .tier-perks {
+    list-style: none;
+    margin-bottom: 28px;
+  }
+
+  .tier-perks li {
+    font-size: 0.9rem;
+    color: var(--mid-gray);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--light-gray);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .tier-perks li:last-child { border-bottom: none; }
+
+  .tier-perks li::before {
+    content: '✓';
+    color: var(--teal);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .tier-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 13px 20px;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+    border: 2px solid var(--teal);
+    color: var(--teal);
+    background: transparent;
+  }
+
+  .tier-btn.primary-btn {
+    background: var(--teal);
+    color: white;
+    border-color: var(--teal);
+  }
+
+  .tier-btn:hover { transform: translateY(-1px); }
+  .tier-btn.primary-btn:hover { background: var(--teal-dark); }
+
+  /* DONATION FORM */
+  .donate-section {
+    padding: 96px 48px;
+    background: var(--warm-white);
+    text-align: center;
+  }
+
+  .donate-section h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+  }
+
+  .donate-section p {
+    color: var(--mid-gray);
+    font-size: 1rem;
+    margin-bottom: 40px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .donate-form-wrap {
+    max-width: 560px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.08);
+    border: 1px solid var(--light-gray);
+  }
+
+  .amount-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .amount-btn {
+    padding: 13px 8px;
+    border: 2px solid var(--light-gray);
+    border-radius: 10px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    background: white;
+    color: var(--charcoal);
+    transition: all 0.15s;
+  }
+
+  .amount-btn:hover, .amount-btn.active {
+    border-color: var(--teal);
+    background: var(--teal);
+    color: white;
+  }
+
+  .donate-cta {
+    width: 100%;
+    padding: 16px;
+    background: var(--coral);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    box-shadow: 0 4px 20px rgba(226,149,120,0.4);
+  }
+
+  .donate-cta:hover { background: var(--coral-dark); transform: translateY(-2px); }
+
+  .donate-note {
+    font-size: 0.8rem;
+    color: var(--mid-gray);
+    margin-top: 14px;
+  }
+
+  /* SOCIAL PROOF */
+  .proof-section {
+    padding: 80px 48px;
+    background: var(--teal);
+    color: white;
+    text-align: center;
+  }
+
+  .proof-logos {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    opacity: 0.85;
+  }
+
+  .proof-logo {
+    background: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .proof-section h3 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    opacity: 0.9;
+  }
+
+  .proof-quote {
+    max-width: 640px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    font-style: italic;
+    opacity: 0.88;
+    line-height: 1.65;
+  }
+
+  /* FAQ */
+  .faq-section {
+    padding: 96px 48px;
+    background: var(--warm-white);
+  }
+
+  .faq-section h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 48px;
+    text-align: center;
+  }
+
+  .faq-list {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--light-gray);
+    padding: 0;
+  }
+
+  .faq-question {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 22px 0;
+    font-family: var(--font-body);
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    transition: color 0.2s;
+  }
+
+  .faq-question:hover { color: var(--teal); }
+
+  .faq-toggle {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--light-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    transition: background 0.2s, transform 0.2s;
+    color: var(--mid-gray);
+  }
+
+  .faq-item.open .faq-toggle {
+    background: var(--teal);
+    color: white;
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s;
+    font-size: 0.96rem;
+    color: var(--mid-gray);
+    line-height: 1.7;
+  }
+
+  .faq-item.open .faq-answer {
+    max-height: 300px;
+    padding-bottom: 20px;
+  }
+
+  /* EMAIL OPT-IN */
+  .optin-section {
+    padding: 96px 48px;
+    background: var(--cream);
+    text-align: center;
+  }
+
+  .optin-section h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 14px;
+  }
+
+  .optin-section p {
+    color: var(--mid-gray);
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto 32px;
+    line-height: 1.65;
+  }
+
+  .optin-form {
+    display: flex;
+    gap: 12px;
+    max-width: 480px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+
+  .optin-input {
+    flex: 1;
+    min-width: 220px;
+    padding: 14px 20px;
+    border: 2px solid var(--light-gray);
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    background: white;
+    transition: border-color 0.2s;
+  }
+
+  .optin-input:focus {
+    outline: none;
+    border-color: var(--teal);
+  }
+
+  .optin-btn {
+    padding: 14px 26px;
+    background: var(--teal);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .optin-btn:hover { background: var(--teal-dark); }
+
+  .optin-unsub {
+    font-size: 0.78rem;
+    color: var(--mid-gray);
+    margin-top: 12px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--charcoal);
+    color: rgba(255,255,255,0.7);
+    padding: 48px;
+    text-align: center;
+  }
+
+  footer img { height: 40px; margin-bottom: 16px; filter: brightness(0) invert(1); }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 0.88rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--teal-light); }
+
+  footer p { font-size: 0.82rem; }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero-content { padding: 100px 24px 60px; }
+    .hero-stats { gap: 24px; }
+    .pain-section, .why-section, .steps-section, .tiers-section, .donate-section, .faq-section, .optin-section { padding: 64px 24px; }
+    .proof-section { padding: 56px 24px; }
+    footer { padding: 36px 24px; }
+    .site-header { padding: 12px 20px; }
+    .amount-grid { grid-template-columns: repeat(2, 1fr); }
+    .optin-form { flex-direction: column; align-items: stretch; }
+    .optin-input { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="https://furkids.org" class="header-logo">
+    <img src="https://furkids.org/assets/images/template/fk_logo.png" alt="Furkids Logo">
+  </a>
+  <a href="https://furkids.org/sustainer-circle/" class="header-cta">Give Monthly</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content" id="heroContent">
+    <span class="hero-badge">Georgia's Largest No-Kill Rescue</span>
+    <h1>Every month, <em>4,600+ animals</em> get a second chance because of people like you.</h1>
+    <p class="hero-sub">Join the Furkids Sustainer Circle and keep Atlanta's most vulnerable cats and dogs alive, healthy, and loved, all year long.</p>
+    <div class="hero-cta-group">
+      <a href="https://furkids.org/sustainer-circle/" class="btn-primary">Give $25/Month</a>
+      <a href="#steps" class="btn-ghost">See How It Works</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">4,601</span>
+        <span class="hero-stat-label">Animals saved in 2025</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">97.6%</span>
+        <span class="hero-stat-label">Live release rate</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">80,000+</span>
+        <span class="hero-stat-label">Lives saved since 2002</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- VSL PLACEHOLDER -->
+<section class="vsl-section">
+  <div class="vsl-placeholder">
+    <img src="https://furkids.org/assets/images/uploads/home_video_still.jpg" alt="Furkids animals">
+    <div>
+      <div class="vsl-play" title="Watch our story"></div>
+      <p class="vsl-label">Watch: What your monthly gift makes possible</p>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN POINTS -->
+<section class="pain-section">
+  <div class="section-inner">
+    <h2>Every day in Georgia, homeless animals are running out of time.</h2>
+    <div class="pain-grid">
+      <div class="pain-card fade-in">
+        <span class="pain-icon">🐾</span>
+        <h3>The shelters are full</h3>
+        <p>Traditional shelters euthanize animals when capacity is reached. Without no-kill rescues, thousands of adoptable dogs and cats in metro Atlanta have nowhere to go.</p>
+      </div>
+      <div class="pain-card fade-in">
+        <span class="pain-icon">💊</span>
+        <h3>Medical costs are crushing</h3>
+        <p>Sick and injured animals need surgeries, heartworm treatment, and specialized care that costs thousands per animal. Without consistent funding, even animals who can be saved sometimes aren't.</p>
+      </div>
+      <div class="pain-card fade-in">
+        <span class="pain-icon">😔</span>
+        <h3>You want to help, but how?</h3>
+        <p>Most people care deeply about homeless animals. But writing a one-time check and walking away still leaves you wondering: did it really make a difference? Is that animal okay now?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US + SOCIAL PROOF -->
+<section class="why-section">
+  <div class="section-inner">
+    <span class="why-label">Why Furkids</span>
+    <h2>We rescue the animals other shelters can't save, and we do it with full accountability.</h2>
+    <p class="why-intro">Furkids was founded in 2002 on a simple belief: every animal deserves a chance at a healthy, loved life. Today, we operate the largest cage-free, no-kill shelter in the Southeast, including one of the only facilities in the region dedicated to FIV-positive cats. We don't turn animals away because they're hard to place. We turn them into success stories.</p>
+
+    <div class="stats-row">
+      <div class="stat-card fade-in">
+        <span class="stat-number">4,601</span>
+        <span class="stat-desc">Homeless animals saved in 2025 alone</span>
+      </div>
+      <div class="stat-card fade-in">
+        <span class="stat-number">3,878</span>
+        <span class="stat-desc">Animals adopted into loving homes in 2025</span>
+      </div>
+      <div class="stat-card fade-in">
+        <span class="stat-number">97.6%</span>
+        <span class="stat-desc">Live release rate, one of the highest in the region</span>
+      </div>
+      <div class="stat-card fade-in">
+        <span class="stat-number">400+</span>
+        <span class="stat-desc">Foster homes keeping animals safe right now</span>
+      </div>
+    </div>
+
+    <div class="testimonial-block fade-in">
+      <blockquote>"Furkids heals the whole animal, physically and emotionally, restoring its health and its spirit."</blockquote>
+      <span class="testimonial-attribution">Furkids Mission Statement, 2002</span>
+    </div>
+
+    <div class="testimonial-block fade-in">
+      <blockquote>"Atlanta Magazine compared Atlanta's top animal shelters and Furkids was noted to have the lowest percentage of budget dedicated to administrative expenses. For every $1,000 we accept in donations, we place more pets into permanent homes than virtually every other organization."</blockquote>
+      <span class="testimonial-attribution">Furkids Annual Report Data — Source: furkids.org/about-us/faqs</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3 STEPS -->
+<section class="steps-section" id="steps">
+  <div class="section-inner">
+    <h2>Here's how you help save a life in 3 steps.</h2>
+    <div class="steps-row">
+      <div class="step-card fade-in">
+        <span class="step-num">1</span>
+        <h3>Choose your monthly amount</h3>
+        <p>Pick $15, $50, or $100 per month. Less than a couple of takeout meals, but enough to keep an animal alive, healthy, and on the path to a forever home.</p>
+      </div>
+      <div class="step-card fade-in">
+        <span class="step-num">2</span>
+        <h3>Join the Sustainer Circle</h3>
+        <p>Your gift goes straight to food, shelter, and lifesaving medical care for Furkids animals. You'll receive exclusive updates and insider news about the animals your giving supports.</p>
+      </div>
+      <div class="step-card fade-in">
+        <span class="step-num">3</span>
+        <h3>Watch the impact unfold</h3>
+        <p>Every month you'll see real animals rescued, healed, and adopted into the families that were waiting for them. You'll know exactly what your giving did.</p>
+      </div>
+    </div>
+    <a href="https://furkids.org/sustainer-circle/" class="btn-primary">Start Giving Monthly</a>
+  </div>
+</section>
+
+<!-- TIERS / COMMUNITY -->
+<section class="tiers-section">
+  <div class="section-inner">
+    <div class="tiers-header fade-in">
+      <span class="why-label">The Sustainer Circle</span>
+      <h2>Pick your place in the pack.</h2>
+      <p>Every tier makes a real difference. Pick the one that fits your life and join hundreds of Furkids supporters who give every single month.</p>
+    </div>
+    <div class="tiers-grid">
+      <!-- Tier 1 -->
+      <div class="tier-card fade-in">
+        <span class="tier-icon">🐾</span>
+        <div class="tier-name">Shelter Friend</div>
+        <span class="tier-price">$15 <span>/month</span></span>
+        <span class="tier-tagline">"I care, and I'm in."</span>
+        <ul class="tier-perks">
+          <li>Monthly impact email with real animal stories</li>
+          <li>Your name on the Furkids digital donor wall</li>
+          <li>Exclusive Sustainer Circle emails with shelter news</li>
+          <li>Reduced-price tickets to Furkids events</li>
+        </ul>
+        <a href="https://furkids.org/sustainer-circle/" class="tier-btn">Join as Shelter Friend</a>
+      </div>
+      <!-- Tier 2 -->
+      <div class="tier-card featured fade-in">
+        <span class="tier-icon">🐕</span>
+        <div class="tier-name">Rescue Champion</div>
+        <span class="tier-price">$50 <span>/month</span></span>
+        <span class="tier-tagline">"I'm invested. Show me more."</span>
+        <ul class="tier-perks">
+          <li>Everything in Shelter Friend, plus...</li>
+          <li>Behind-the-scenes monthly video from shelter staff</li>
+          <li>Handwritten thank-you note from the Furkids team</li>
+          <li>Exclusive Sustainer Circle member events</li>
+          <li>Quarterly impact report with your giving breakdown</li>
+        </ul>
+        <a href="https://furkids.org/sustainer-circle/" class="tier-btn primary-btn">Join as Rescue Champion</a>
+      </div>
+      <!-- Tier 3 -->
+      <div class="tier-card fade-in">
+        <span class="tier-icon">🏆</span>
+        <div class="tier-name">Lifesaver</div>
+        <span class="tier-price">$100 <span>/month</span></span>
+        <span class="tier-tagline">"I'm a core part of this."</span>
+        <ul class="tier-perks">
+          <li>Everything in Rescue Champion, plus...</li>
+          <li>Personalized letter from Furkids Founder on anniversary</li>
+          <li>Furkids branded sticker or small keepsake mailed annually</li>
+          <li>Priority invitations to special events and tours</li>
+          <li>Recognition in the Furkids Annual Report</li>
+        </ul>
+        <a href="https://furkids.org/sustainer-circle/" class="tier-btn">Join as Lifesaver</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DONATION FORM -->
+<section class="donate-section">
+  <div class="section-inner">
+    <h2 class="fade-in">Your $50 a month is less than two dinners out. For a scared dog, it's everything.</h2>
+    <p class="fade-in">Choose your monthly amount below and become a Sustainer Circle member today.</p>
+    <div class="donate-form-wrap fade-in">
+      <div class="amount-grid">
+        <button class="amount-btn" onclick="setAmount(this, 15)">$15</button>
+        <button class="amount-btn active" onclick="setAmount(this, 50)">$50</button>
+        <button class="amount-btn" onclick="setAmount(this, 100)">$100</button>
+        <button class="amount-btn" onclick="setAmount(this, 'other')">Other</button>
+      </div>
+      <a href="https://furkids.org/sustainer-circle/" class="donate-cta" id="donateCta">Give $50/Month and Join the Circle</a>
+      <p class="donate-note">Secure, tax-deductible. Cancel anytime. Tax ID 01-0766844.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF BAND -->
+<section class="proof-section">
+  <div class="section-inner">
+    <div class="proof-logos">
+      <span class="proof-logo">Charity Navigator 4-Star</span>
+      <span class="proof-logo">Candid Platinum</span>
+      <span class="proof-logo">PetSmart Charities Gold Partner</span>
+      <span class="proof-logo">PetcoLove Partner</span>
+      <span class="proof-logo">Founded 2002</span>
+      <span class="proof-logo">Fox 5 Atlanta Featured</span>
+    </div>
+    <h3>Trusted by Atlanta. Proven for 24 years.</h3>
+    <p class="proof-quote">"Furkids offers thrift store finds with high quality, but most importantly, rescues homeless animals, providing them with the best medical care and nurturing environment while working to find them a forever home." — Community Nomination, Best of 2025, Alpharetta Patch</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="section-inner">
+    <h2 class="fade-in">Your questions, answered.</h2>
+    <div class="faq-list" id="faqList">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How does my monthly gift get used?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">Your monthly gift goes directly to food, shelter, and medical care for homeless animals in the Furkids program. Furkids has been recognized by Atlanta Magazine for having one of the lowest administrative cost percentages of any shelter in the city, which means your dollars work harder here than almost anywhere else.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Can I cancel my monthly gift at any time?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">Yes, absolutely. You can cancel your recurring gift at any time with no hassle and no penalty. Simply email Furkids or call the shelter directly. You are never locked in.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Is my donation tax-deductible?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">Yes. Furkids is a registered 501(c)(3) nonprofit organization (Tax ID 01-0766844), so your monthly gift is fully tax-deductible to the extent allowed by law. You will receive an annual giving summary for your records.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What is the Sustainer Circle?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">The Sustainer Circle is Furkids' monthly giving program. Members receive exclusive access to insider shelter news, event discounts, and the knowledge that their gift is working every single month to keep animals alive and moving toward their forever homes.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How many animals does Furkids care for at once?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">Approximately 1,000 animals are in the Furkids program at any given time, spread across their shelters, 8 PetSmart and Petco adoption centers, and over 400 foster homes in the Atlanta metro area.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What makes Furkids different from other shelters?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">Furkids operates the largest cage-free, no-kill shelter in the Southeast and one of the only FIV-positive cat care facilities in the region. They also allow children of all ages to volunteer, something no other metro Atlanta rescue offers. They place more pets per donation dollar than virtually any other organization in the city.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Can I see where the animals come from?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">Yes. Furkids rescues animals from overcrowded shelters, hoarding situations, owner surrenders, and their Interstate TransFUR Coalition, which partners with northern shelters to find homes for southern animals. Their blog at furkids.org features regular updates and real stories from the field.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What is Furkids' live release rate?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">In 2025, Furkids achieved a 97.6% live release rate, meaning that out of every animal that came into their care, 97.6% were adopted, transferred to partner shelters, returned to owners, or placed in foster homes. This is among the highest in the region.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Can I volunteer or foster in addition to donating?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">Absolutely. Furkids welcomes volunteers of all ages (including children, which is unique to their program), and their foster network is always looking for people to open their homes temporarily. Visit furkids.org/volunteer to get started.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How will I know what my gift accomplished?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">Sustainer Circle members receive exclusive monthly emails with real animal stories and impact updates. At higher tiers, you also get behind-the-scenes videos and quarterly impact reports. You will never wonder if your gift mattered because Furkids makes it their mission to show you.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EMAIL OPT-IN -->
+<section class="optin-section">
+  <div class="section-inner">
+    <h2 class="fade-in">Not ready to give monthly yet? Stay connected to the animals you already care about.</h2>
+    <p class="fade-in">Get real stories, adoption updates, and shelter news delivered to your inbox. No spam. Just animals who need a champion.</p>
+    <form class="optin-form fade-in" onsubmit="return false;">
+      <input type="email" class="optin-input" placeholder="Your email address" aria-label="Email address">
+      <button type="submit" class="optin-btn">Keep Me Updated</button>
+    </form>
+    <p class="optin-unsub">Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="https://furkids.org/assets/images/template/footer_logo.jpg" alt="Furkids Logo">
+  <div class="footer-links">
+    <a href="https://furkids.org/adopt/">Adopt</a>
+    <a href="https://furkids.org/sustainer-circle/">Give Monthly</a>
+    <a href="https://furkids.org/volunteer/">Volunteer</a>
+    <a href="https://furkids.org/about-us/">About</a>
+    <a href="https://furkids.org/contact/">Contact</a>
+    <a href="https://furkids.org/about-us/donor-policy/">Privacy Policy</a>
+  </div>
+  <p>Furkids Animal Rescue &amp; Shelters | 5235 Union Hill Road, Cumming GA 30040 | 770-613-0880<br>
+  Tax ID 01-0766844 | 501(c)(3) Nonprofit | &copy; 2026 Furkids. All Rights Reserved.</p>
+</footer>
+
+<script>
+  // Hero animation
+  window.addEventListener('load', () => {
+    document.getElementById('heroContent').classList.add('visible');
+    document.getElementById('heroBg').classList.add('loaded');
+  });
+
+  // Intersection Observer for fade-ins
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Donation amount
+  let selectedAmount = 50;
+  function setAmount(btn, amount) {
+    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedAmount = amount;
+    const cta = document.getElementById('donateCta');
+    if (amount === 'other') {
+      cta.textContent = 'Choose My Amount and Join the Circle';
+    } else {
+      cta.textContent = `Give $${amount}/Month and Join the Circle`;
+    }
+  }
+</script>
+</body>
+</html>
